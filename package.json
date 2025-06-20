@@ -1,0 +1,48 @@
+{
+  "name": "@thelord/mcp-cloudflare",
+  "description": "A Model Context Protocol server implementation for Cloudflare DNS that enables AI agents to manage DNS records for your domains",
+  "version": "1.0.0",
+  "author": "TheLord",
+  "main": "dist/index.js",
+  "module": "./src/index.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thelord/mcp-cloudflare.git"
+  },
+  "types": "./index.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "build:swc": "swc src --source-maps --out-dir dist",
+    "inspect": "@modelcontextprotocol/inspector tsx src/index.ts",
+    "dev": "npx @smithery/cli dev",
+    "smithery:build": "npx @smithery/cli build"
+  },
+  "bin": {
+    "mcp-cloudflare": "dist/cli.js"
+  },
+  "type": "module",
+  "keywords": [
+    "mcp",
+    "cloudflare",
+    "dns",
+    "domain-management"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.1",
+    "dotenv": "^16.5.0",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@smithery/cli": "^1.0.0",
+    "@swc/cli": "^0.7.3",
+    "@swc/core": "^1.11.21",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "provenance": true
+  }
+}

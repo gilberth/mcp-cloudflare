@@ -1,0 +1,25 @@
+runtime: "typescript"
+startCommand:
+  type: "http"
+  configSchema:
+    type: "object"
+    required: ["cloudflareApiToken", "cloudflareZoneId"]
+    properties:
+      cloudflareApiToken:
+        type: "string"
+        title: "Cloudflare API Token"
+        description: "Your Cloudflare API Token with Zone:Edit permissions"
+        format: "password"
+      cloudflareZoneId:
+        type: "string"
+        title: "Zone ID"
+        description: "The Zone ID of your domain in Cloudflare"
+      cloudflareEmail:
+        type: "string"
+        title: "Cloudflare Email (Optional)"
+        description: "Your Cloudflare account email (only needed for legacy API keys)"
+        format: "email"
+  exampleConfig:
+    cloudflareApiToken: "your-api-token-here"
+    cloudflareZoneId: "your-zone-id-here"
+    cloudflareEmail: "your-email@example.com"
