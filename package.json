@@ -1,7 +1,7 @@
 {
   "name": "@thelord/mcp-cloudflare",
   "description": "A Model Context Protocol server implementation for Cloudflare DNS that enables AI agents to manage DNS records for your domains",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "TheLord",
   "main": "dist/index.js",
   "module": "./src/index.ts",
