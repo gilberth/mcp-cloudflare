@@ -121,7 +121,7 @@ export const CloudflareApi = {
     // Update an existing DNS record
     updateDnsRecord: async (recordId, updates) => {
         const validatedUpdates = UpdateDnsRecordRequest.parse(updates);
-        const response = await api(`dns_records/${recordId}`, 'PUT', validatedUpdates);
+        const response = await api(`dns_records/${recordId}`, 'PATCH', validatedUpdates);
         const data = CloudflareApiResponse.parse(await response.json());
         if (!data.success) {
             throw new Error(`API Error: ${data.errors.map(e => e.message).join(', ')}`);

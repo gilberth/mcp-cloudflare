@@ -64,7 +64,7 @@ const getHeaders = () => {
 
 const api = async (
   endpoint: string, 
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET', 
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' = 'GET', 
   body?: Record<string, unknown>
 ) => {
   if (!cloudflareConfig.zoneId) {
@@ -168,7 +168,7 @@ export const CloudflareApi = {
   // Update an existing DNS record
   updateDnsRecord: async (recordId: string, updates: UpdateDnsRecord): Promise<DnsRecord> => {
     const validatedUpdates = UpdateDnsRecordRequest.parse(updates);
-    const response = await api(`dns_records/${recordId}`, 'PUT', validatedUpdates);
+    const response = await api(`dns_records/${recordId}`, 'PATCH', validatedUpdates);
     const data = CloudflareApiResponse.parse(await response.json());
     
     if (!data.success) {
