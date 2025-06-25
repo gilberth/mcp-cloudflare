@@ -2,8 +2,8 @@ import { z } from "zod";
 export declare const DnsRecordType: z.ZodEnum<["A", "AAAA", "CNAME", "MX", "TXT", "NS", "SRV", "CAA", "PTR"]>;
 export declare const CloudflareDnsRecord: z.ZodObject<{
     id: z.ZodString;
-    zone_id: z.ZodString;
-    zone_name: z.ZodString;
+    zone_id: z.ZodOptional<z.ZodString>;
+    zone_name: z.ZodOptional<z.ZodString>;
     name: z.ZodString;
     type: z.ZodEnum<["A", "AAAA", "CNAME", "MX", "TXT", "NS", "SRV", "CAA", "PTR"]>;
     content: z.ZodString;
@@ -27,14 +27,14 @@ export declare const CloudflareDnsRecord: z.ZodObject<{
     }>>;
 }, "strip", z.ZodTypeAny, {
     id: string;
-    zone_id: string;
-    zone_name: string;
     name: string;
     type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
     content: string;
     ttl: number;
     created_on: string;
     modified_on: string;
+    zone_id?: string | undefined;
+    zone_name?: string | undefined;
     proxied?: boolean | undefined;
     priority?: number | undefined;
     meta?: {
@@ -44,14 +44,14 @@ export declare const CloudflareDnsRecord: z.ZodObject<{
     } | undefined;
 }, {
     id: string;
-    zone_id: string;
-    zone_name: string;
     name: string;
     type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
     content: string;
     ttl: number;
     created_on: string;
     modified_on: string;
+    zone_id?: string | undefined;
+    zone_name?: string | undefined;
     proxied?: boolean | undefined;
     priority?: number | undefined;
     meta?: {
@@ -84,8 +84,8 @@ export declare const CloudflareApiResponse: z.ZodObject<{
     }>, "many">;
     result: z.ZodOptional<z.ZodUnion<[z.ZodArray<z.ZodObject<{
         id: z.ZodString;
-        zone_id: z.ZodString;
-        zone_name: z.ZodString;
+        zone_id: z.ZodOptional<z.ZodString>;
+        zone_name: z.ZodOptional<z.ZodString>;
         name: z.ZodString;
         type: z.ZodEnum<["A", "AAAA", "CNAME", "MX", "TXT", "NS", "SRV", "CAA", "PTR"]>;
         content: z.ZodString;
@@ -109,14 +109,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
         }>>;
     }, "strip", z.ZodTypeAny, {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {
@@ -126,14 +126,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
         } | undefined;
     }, {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {
@@ -143,8 +143,8 @@ export declare const CloudflareApiResponse: z.ZodObject<{
         } | undefined;
     }>, "many">, z.ZodObject<{
         id: z.ZodString;
-        zone_id: z.ZodString;
-        zone_name: z.ZodString;
+        zone_id: z.ZodOptional<z.ZodString>;
+        zone_name: z.ZodOptional<z.ZodString>;
         name: z.ZodString;
         type: z.ZodEnum<["A", "AAAA", "CNAME", "MX", "TXT", "NS", "SRV", "CAA", "PTR"]>;
         content: z.ZodString;
@@ -168,14 +168,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
         }>>;
     }, "strip", z.ZodTypeAny, {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {
@@ -185,14 +185,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
         } | undefined;
     }, {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {
@@ -229,14 +229,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
     }[];
     result?: {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {
@@ -246,14 +246,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
         } | undefined;
     } | {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {
@@ -280,14 +280,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
     }[];
     result?: {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {
@@ -297,14 +297,14 @@ export declare const CloudflareApiResponse: z.ZodObject<{
         } | undefined;
     } | {
         id: string;
-        zone_id: string;
-        zone_name: string;
         name: string;
         type: "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS" | "SRV" | "CAA" | "PTR";
         content: string;
         ttl: number;
         created_on: string;
         modified_on: string;
+        zone_id?: string | undefined;
+        zone_name?: string | undefined;
         proxied?: boolean | undefined;
         priority?: number | undefined;
         meta?: {

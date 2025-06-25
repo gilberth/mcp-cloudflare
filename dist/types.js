@@ -5,8 +5,8 @@ export const DnsRecordType = z.enum([
 ]);
 export const CloudflareDnsRecord = z.object({
     id: z.string(),
-    zone_id: z.string(),
-    zone_name: z.string(),
+    zone_id: z.string().optional(),
+    zone_name: z.string().optional(),
     name: z.string(),
     type: DnsRecordType,
     content: z.string(),

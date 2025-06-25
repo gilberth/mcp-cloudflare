@@ -109,17 +109,27 @@ export const CloudflareApi = {
   // List all DNS records
   listDnsRecords: async (): Promise<DnsRecord[]> => {
     const response = await api('dns_records');
-    const data = CloudflareApiResponse.parse(await response.json());
+    const rawData = await response.json();
     
-    if (!data.success) {
-      throw new Error(`API Error: ${data.errors.map(e => e.message).join(', ')}`);
+    try {
+      const data = CloudflareApiResponse.parse(rawData);
+      
+      if (!data.success) {
+        throw new Error(`API Error: ${data.errors.map(e => e.message).join(', ')}`);
+      }
+      
+      if (!data.result) {
+        return [];
+      }
+      
+      // Handle both array and single object results
+      const records = Array.isArray(data.result) ? data.result : [data.result];
+      return records.filter(record => record !== null);
+    } catch (parseError) {
+      console.error('API Response parsing failed:', parseError);
+      console.error('Raw API Response:', JSON.stringify(rawData, null, 2));
+      throw new Error(`Failed to parse API response: ${parseError instanceof Error ? parseError.message : 'Unknown error'}`);
     }
-    
-    if (!data.result || !Array.isArray(data.result)) {
-      return [];
-    }
-    
-    return data.result;
   },
   
   // Get a specific DNS record by ID
@@ -195,16 +205,26 @@ export const CloudflareApi = {
     }
     
     const response = await api(endpoint);
-    const data = CloudflareApiResponse.parse(await response.json());
+    const rawData = await response.json();
     
-    if (!data.success) {
-      throw new Error(`API Error: ${data.errors.map(e => e.message).join(', ')}`);
+    try {
+      const data = CloudflareApiResponse.parse(rawData);
+      
+      if (!data.success) {
+        throw new Error(`API Error: ${data.errors.map(e => e.message).join(', ')}`);
+      }
+      
+      if (!data.result) {
+        return [];
+      }
+      
+      // Handle both array and single object results
+      const records = Array.isArray(data.result) ? data.result : [data.result];
+      return records.filter(record => record !== null);
+    } catch (parseError) {
+      console.error('API Response parsing failed:', parseError);
+      console.error('Raw API Response:', JSON.stringify(rawData, null, 2));
+      throw new Error(`Failed to parse API response: ${parseError instanceof Error ? parseError.message : 'Unknown error'}`);
     }
-    
-    if (!data.result || !Array.isArray(data.result)) {
-      return [];
-    }
-    
-    return data.result;
   },
 };

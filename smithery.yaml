@@ -1,3 +1,5 @@
+name: "mcp-cloudflare"
+description: "Manage your Cloudflare DNS records seamlessly through AI agents. List, create, update, and delete DNS records with full support for various record types and Cloudflare API features."
 runtime: "typescript"
 startCommand:
   type: "http"
