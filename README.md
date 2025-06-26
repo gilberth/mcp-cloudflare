@@ -2,6 +2,10 @@
 
 A Model Context Protocol server implementation for Cloudflare DNS that enables AI agents to manage DNS records for your domains.
 
+<a href="https://glama.ai/mcp/servers/@gilberth/mcp-cloudflare">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@gilberth/mcp-cloudflare/badge" alt="Cloudflare DNS Server MCP server" />
+</a>
+
 ## Features
 
 - 🔍 **List DNS records** - View all or filtered DNS records
@@ -102,4 +106,4 @@ Delete a DNS record by ID.
 
 ## License
 
-MIT# mcp-cloudflare
+MIT
